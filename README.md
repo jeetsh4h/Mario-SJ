@@ -1,6 +1,5 @@
 # Mario-SJ
 CSIT302: Final Project 
 
-For Jeet (setup your Unity using these assets)
-
-Testing git collaboration
+DO THIS BEFORE EACH CHANGE
+For pulling - use 'git pull' on cmd via root folder to pull the changes made
