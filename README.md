@@ -7,7 +7,7 @@ For pulling - use 'git pull' on cmd via root folder to pull the changes made
 For file upload:
 First commit -> push onto child branch -> pull req from main -> pull from private machines
 
-Git Basics for US
+Git Basics for Us
 ---
 - There is a local repository and a remote repository  
 - You pull the remote repository branch onto your local repository branch  
