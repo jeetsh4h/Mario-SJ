@@ -17,3 +17,10 @@ Git Basics for Us
 - The collective changes then can be merged into the main remote branch using a pull request  
 
 You have to reset your branch using the main branch as multiple pull requests might cause a merge conflict causing your branch to be out of sync from main  
+
+Next Steps:
+-   Setting up clean movements (left and right with the sprite changing face direction).
+-   Setting up clean jump movement as well (need to decide if we want to give Mario double jump or not).
+
+How we figured it out:
+-   
