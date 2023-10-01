@@ -23,4 +23,8 @@ Next Steps:
 -   Setting up clean jump movement as well (need to decide if we want to give Mario double jump or not).
 
 How we figured it out:
+-   For rigid bodies always make sure the Rigidbody 2D component has:
+    collision detector: continuous
+    interpolate - interpolate
+    this allows fluid movement in the sprites.
 -   
