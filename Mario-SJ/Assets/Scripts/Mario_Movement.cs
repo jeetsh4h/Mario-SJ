@@ -5,7 +5,12 @@ using UnityEngine.UIElements;
 
 public class Mario_Movement : MonoBehaviour
 {
-    public float moveSpeed = 0.1f; 
+    private float horizontal; // horizontal input
+    private float moveSpeed = 8f; 
+    private float jump = 16f;
+    private bool IsFacingRight = true;
+
+    
     // Start is called before the first frame update
     void Start()
     {
