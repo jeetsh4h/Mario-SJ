@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Mario_Movement : MonoBehaviour
-{
-<<<<<<< Updated upstream
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-=======
+{   
     public float speed;                                                 // assigning vars
     public float jump;                                                  // public so that we can access the vars in unity directly
 
@@ -24,15 +17,11 @@ public class Mario_Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        
-=======
         movement = Input.GetAxis("Horizontal");                         // assigning Horizontal movement key, has already been configured for left and right
         rb.velocity = new Vector2(movement * speed, rb.velocity.y);     // Vector2(x,y) is the format - (change in position of x, change in pos of y
                                                                         // this is why rn.velocity.y is the way it is, retaining it's position in the game
@@ -59,6 +48,5 @@ public class Mario_Movement : MonoBehaviour
         {
             isJumping = true;
         }
->>>>>>> Stashed changes
     }
 }
