@@ -32,3 +32,6 @@ How we figured it out:
 -   The background is fairly easy to do, it is done by using tiles, we installed the tiles via an image on the internet and use the inbuilt
     tilemap function in unity to draw each tile per pixel on the screen. (note that the pixels on the parent image needs to match the tilemap
     pixel size)
+-   Important thing to do for tilemapping:
+    tick pre-released packages in advanced project settings -> go to all packages and navigate to 2D tilemap extras and unlock it.
+    now you have more options when creating tilemaps from 2D empty objects.
