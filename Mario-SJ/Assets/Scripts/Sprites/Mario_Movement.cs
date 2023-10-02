@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mario_Movement : MonoBehaviour
+public class Movement : MonoBehaviour
 {   
     public float speed;                                                 // assigning vars
     public float jump;                                                  // public so that we can access the vars in unity directly
