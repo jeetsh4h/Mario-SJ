@@ -21,10 +21,14 @@ You have to reset your branch using the main branch as multiple pull requests mi
 Next Steps:
 -   Setting up clean movements (left and right with the sprite changing face direction).
 -   Setting up clean jump movement as well (need to decide if we want to give Mario double jump or not).
+-   Setting up proper backgrounds.
 
 How we figured it out:
 -   For rigid bodies always make sure the Rigidbody 2D component has:
     collision detector: continuous
     interpolate - interpolate
     this allows fluid movement in the sprites.
--   
+-   The rest is code written as comments on the movement script itself.
+-   The background is fairly easy to do, it is done by using tiles, we installed the tiles via an image on the internet and use the inbuilt
+    tilemap function in unity to draw each tile per pixel on the screen. (note that the pixels on the parent image needs to match the tilemap
+    pixel size)
