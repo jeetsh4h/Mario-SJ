@@ -29,9 +29,21 @@ How we figured it out:
     interpolate - interpolate
     this allows fluid movement in the sprites.
 -   The rest is code written as comments on the movement script itself.
--   The background is fairly easy to do, it is done by using tiles, we installed the tiles via an image on the internet and use the inbuilt
+
+Background
+
+Tilemapping:
+-   The background is fairly easy to do, it is done by using tiles, we installed the tiles via an image on
+    the internet and use the inbuilt
     tilemap function in unity to draw each tile per pixel on the screen. (note that the pixels on the parent image needs to match the tilemap
     pixel size)
 -   Important thing to do for tilemapping:
     tick pre-released packages in advanced project settings -> go to all packages and navigate to 2D tilemap extras and unlock it.
     now you have more options when creating tilemaps from 2D empty objects.
+
+Scripting tiles:
+-   Although it might be a slow process, we are creating different tilemaps so that we can deal with the
+    interaction between the player and objects easier, like grass will have a different tilemapping to 
+    that of water.
+-   I tried assigning private scripts per tilemap but it doesnt work since the function is ScriptableObject
+    and not MonoBehavior.
