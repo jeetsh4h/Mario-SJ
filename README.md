@@ -40,6 +40,9 @@ Tilemapping:
 -   Important thing to do for tilemapping:
     tick pre-released packages in advanced project settings -> go to all packages and navigate to 2D tilemap extras and unlock it.
     now you have more options when creating tilemaps from 2D empty objects.
+-   We can create new Tilemap GameObjects so that the interaction between player and objects are different,
+    for example, non interactable and interactable objects can be 2 different objects - one having
+    rigidbody2d and one not. 
 
 Scripting tiles:
 -   Although it might be a slow process, we are creating different tilemaps so that we can deal with the
@@ -47,3 +50,5 @@ Scripting tiles:
     that of water.
 -   I tried assigning private scripts per tilemap but it doesnt work since the function is ScriptableObject
     and not MonoBehavior.
+-   I finally figured it out, using the tillmap collider 2D component, we can set triggers, using that we
+    can go forward and work on scripting each tilemap respectively (note the usage of tiles).
