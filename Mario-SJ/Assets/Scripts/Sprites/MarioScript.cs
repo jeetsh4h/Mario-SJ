@@ -23,30 +23,51 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = Input.GetAxis("Horizontal");                         // assigning Horizontal movement key, has already been configured for left and right
-        rb.velocity = new Vector2(movement * Speed, rb.velocity.y);     // Vector2(x,y) is the format - (change in position of x, change in pos of y
-                                                                        // this is why rn.velocity.y is the way it is, retaining it's position in the game
-                                                                        // thats why it was going in 45 degree angles when we adjusted this var.
-
-        if ((Input.GetButtonDown("Jump")) && (isJumping == false))      // Jump is inbuilt, we cannot use GetAxis since we want him to 'jump' not 'fly'    
+    /*
+        assigning Horizontal movement key, has already been configured for left and right 
+        Vector2(x,y) is the format - (change in position of x, change in pos of y
+        this is why rn.velocity.y is the way it is, retaining it's position in the game
+        thats why it was going in 45 degree angles when we adjusted this var.
+        Jump is inbuilt, we cannot use GetAxis since we want him to 'jump' not 'fly'
+        always remember that vector2 is in (x,y), and that we need to create a new vector2
+        DO NOT CHANGE DEFAULTS IN GRAVITY SCALE IT MESSES EVERYTHING UP, we need to only
+    */
+        movement = Input.GetAxis("Horizontal");                         
+        
+        if (isTouchingWater == false)
         {
-            rb.AddForce(new Vector2(rb.velocity.x, Jump));              // always remember that vector2 is in (x,y), and that we need to create a new vector2
-        }                                                               // DO NOT CHANGE DEFAULTS IN GRAVITY SCALE IT MESSES EVERYTHING UP, we need to only
-                                                                        // adjust the jump key scale
-
-        // Debug.Log("Current Velocity" + rb.velocity);                    // doing this to view my real time current velocity
-    }
-
-    private void OnCollisionEnter2D(Collision2D other_objects)          // nice function - allows us to decide interactions between objects via their tags
-    {                                                                   // REMEMBER THAT WE HAVE TO ADD WHATEVER INTERACTIONS WE WANT TO THIS FUNCTION,
-                                                                        // WE CANNOT CREATE A NEW FUNCTION FOR THE SAME!!
-        if (other_objects.gameObject.CompareTag("Floor"))                // if our player collides with the floor tagged object
+            rb.velocity = new Vector2(movement * Speed, rb.velocity.y);
+        }
+        else
         {
-            isJumping = false;                                          // this makes sure our player doesnt have infinite jumps, I added this to the jump
-        }                                                               // function above as a parameter
-    }
+            rb.velocity = new Vector2((movement * Speed) / 2, rb.velocity.y);
+        }
 
-    private void OnCollisionExit2D(Collision2D other_objects)           // why not just do IF and ELSE in the prev function? cus this is on Exit of collision
+
+        if ((Input.GetButtonDown("Jump")) && (isJumping == false))          
+        {
+            rb.AddForce(new Vector2(rb.velocity.x, Jump));              
+        }                                                               
+
+         Debug.Log("Current Velocity" + rb.velocity);                    // doing this to view my real time current velocity
+    }
+    /*
+        nice set of functions - allows us to decide interactions between objects via their tags
+        REMEMBER THAT WE HAVE TO ADD WHATEVER INTERACTIONS WE WANT TO THIS FUNCTION,
+        WE CANNOT CREATE A NEW FUNCTION FOR THE SAME!!
+    */
+    private void OnCollisionEnter2D(Collision2D other_objects)          
+    {
+        // if our player collides with the floor tagged object                                              
+        if (other_objects.gameObject.CompareTag("Floor"))               
+        {
+            // this makes sure our player doesnt have infinite jumps, I added this to the jump
+            isJumping = false;                                          
+        }                                                                   }
+
+    // why not just do IF and ELSE in the prev function? cus this is on Exit of collision,
+    // we need to do them seperately
+    private void OnCollisionExit2D(Collision2D other_objects)           
     {
         if (other_objects.gameObject.CompareTag("Floor"))
         {
@@ -54,19 +75,22 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)                 // TODO: make him die when he touches water
+    private void OnTriggerEnter2D(Collider2D collision)                 
     {
         if (collision.CompareTag("Water"))
         {
-            
-        }
+            isTouchingWater = true;
+            // allowing him to jump infinite times in water
+            isJumping = false;
+        }   
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Water"))
         {
-            
+            isTouchingWater = false;
+            isJumping = true;
         }
     }
 }
