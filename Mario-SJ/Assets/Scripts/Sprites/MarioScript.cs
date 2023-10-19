@@ -13,18 +13,21 @@ public class Movement : MonoBehaviour
 
     private float movement;                                             // this assigns left and right movement
     private Rigidbody2D rb;
-
+    private Transform characterTransform;
+    private SpriteRenderer characterSpriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        characterTransform = transform;
+        characterSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
     /*
-        assigning Horizontal movement key, has already been configured for left and right 
+        assigning "Horizontal" movement key, has already been configured for left and right 
         Vector2(x,y) is the format - (change in position of x, change in pos of y
         this is why rn.velocity.y is the way it is, retaining it's position in the game
         thats why it was going in 45 degree angles when we adjusted this var.
@@ -37,6 +40,17 @@ public class Movement : MonoBehaviour
         if (isTouchingWater == false)
         {
             rb.velocity = new Vector2(movement * Speed, rb.velocity.y);
+            
+            if (movement  < 0)
+            {
+                // to flip our character when it turns left
+                characterSpriteRenderer.flipX = true;
+            }
+            else if(movement > 0)
+            {
+                // to reset it back to original
+                characterSpriteRenderer.flipX = false;
+            }
         }
         else
         {
@@ -47,9 +61,9 @@ public class Movement : MonoBehaviour
         if ((Input.GetButtonDown("Jump")) && (isJumping == false))          
         {
             rb.AddForce(new Vector2(rb.velocity.x, Jump));              
-        }                                                               
-
-         Debug.Log("Current Velocity" + rb.velocity);                    // doing this to view my real time current velocity
+        }
+        // doing this to view my real time current velocity
+        Debug.Log("Current Velocity" + rb.velocity);
     }
     /*
         nice set of functions - allows us to decide interactions between objects via their tags

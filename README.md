@@ -52,3 +52,8 @@ Scripting tiles:
     and not MonoBehavior.
 -   I finally figured it out, using the tillmap collider 2D component, we can set triggers, using that we
     can go forward and work on scripting each tilemap respectively (note the usage of tiles).
+
+Animations:
+-   Every animation of the sprite (idle, running, jumping, etc) or for world objects (flowers, tree wind
+    interaction), we need a series of image (.png) files so add into the animation tab in Unity.
+-   We need to create different clips per animation (Mario_IDLE, Mario_RUNNING). 
