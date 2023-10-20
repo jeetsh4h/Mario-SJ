@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     public float Jump;                                                  // public so that we can access the vars in unity directly
     public bool isJumping;
     public bool isTouchingWater;
+    public Animator animator;
 
     private float movement;                                             // this assigns left and right movement
     private Rigidbody2D rb;
@@ -40,6 +41,9 @@ public class Movement : MonoBehaviour
         if (isTouchingWater == false)
         {
             rb.velocity = new Vector2(movement * Speed, rb.velocity.y);
+            // to change the animator when the player is running, Mathf.Abs is just getting
+            // modulus value so that we have change in the sprite when we go left as well
+            animator.SetFloat("Speed", Mathf.Abs(movement));
             
             if (movement  < 0)
             {
@@ -60,8 +64,18 @@ public class Movement : MonoBehaviour
 
         if ((Input.GetButtonDown("Jump")) && (isJumping == false))          
         {
-            rb.AddForce(new Vector2(rb.velocity.x, Jump));              
+            rb.AddForce(new Vector2(rb.velocity.x, Jump));
         }
+
+        if (isJumping == true)
+        {
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
+        }
+
         // doing this to view my real time current velocity
         Debug.Log("Current Velocity" + rb.velocity);
     }
@@ -76,8 +90,9 @@ public class Movement : MonoBehaviour
         if (other_objects.gameObject.CompareTag("Floor"))               
         {
             // this makes sure our player doesnt have infinite jumps, I added this to the jump
-            isJumping = false;                                          
-        }                                                                   }
+            isJumping = false;
+        }                                                                   
+    }
 
     // why not just do IF and ELSE in the prev function? cus this is on Exit of collision,
     // we need to do them seperately
