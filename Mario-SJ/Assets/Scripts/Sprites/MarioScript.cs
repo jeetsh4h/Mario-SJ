@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour
         }
 
         // doing this to view my real time current velocity
-        Debug.Log("Current Velocity" + rb.velocity);
+        //Debug.Log("Current Velocity" + rb.velocity);
     }
     /*
         nice set of functions - allows us to decide interactions between objects via their tags
