@@ -30,6 +30,11 @@ How we figured it out:
     this allows fluid movement in the sprites.
 -   The rest is code written as comments on the movement script itself.
 
+Decisions:
+-   Due to the fact tilemaps can be buggy with their colliders, we are not going to use staircase-like 
+    platforms, we will stick with flat platforms and high platforms.
+    UPDATE: lol nvm I fixed that.
+
 Background
 
 Tilemapping:
@@ -56,4 +61,6 @@ Scripting tiles:
 Animations:
 -   Every animation of the sprite (idle, running, jumping, etc) or for world objects (flowers, tree wind
     interaction), we need a series of image (.png) files so add into the animation tab in Unity.
--   We need to create different clips per animation (Mario_IDLE, Mario_RUNNING). 
+-   We need to create different clips per animation (Mario_IDLE, Mario_RUNNING).
+-   Using the Animator, we can control which animation is linked to the other. We need to set a parameter
+    which will act as a base that will influence the entry and exit of each of the animations we have created.
