@@ -64,3 +64,6 @@ Animations:
 -   We need to create different clips per animation (Mario_IDLE, Mario_RUNNING).
 -   Using the Animator, we can control which animation is linked to the other. We need to set a parameter
     which will act as a base that will influence the entry and exit of each of the animations we have created.
+-   For the text box, add the text you want to put in in the TextMeshPro component, to make sure its fitting
+    properly you will need to adjust the size and font accordingly. Everything that needs to be edited is through
+    the Unity component itself.
