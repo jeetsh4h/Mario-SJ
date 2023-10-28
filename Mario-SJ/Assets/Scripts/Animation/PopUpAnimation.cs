@@ -2,34 +2,20 @@ using UnityEngine;
 
 public class PopUpAnimation : MonoBehaviour
 {
-    [SerializeField] public CircleCollider2D signCollider; // Reference to the parent (Sign) Collider 2D
     public Animator animator;
 
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (signCollider == null)
+        if (collision.CompareTag("Player"))
         {
-            Debug.LogError("The 'signCollider' reference is not set. Please assign it in the Inspector.");
+            animator.SetBool("inRange", true);
         }
     }
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision == signCollider)
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("Entered trigger zone");
-            // Trigger your animation or do other actions here
-            //animator.SetBool("isAnimating", true);
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision == signCollider)
-        {
-            Debug.Log("Exited trigger zone");
-            // Stop the animation or do other actions here
-            //animator.SetBool("isAnimating", false);
+            animator.SetBool("inRange", false);
         }
     }
 }
