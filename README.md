@@ -7,6 +7,9 @@ For pulling - use 'git pull' on cmd via root folder to pull the changes made
 For file upload:
 First commit -> push onto child branch -> pull req from main -> pull from private machines
 
+The final project pivoted to using GDevelop due to time constraints.
+### The final report submission has been attached here.
+
 Git Basics for Us
 ---
 - There is a local repository and a remote repository  
